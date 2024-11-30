@@ -5,11 +5,11 @@ target/
 
 ### IntelliJ IDEA ###
 .idea/
-.idea/encodings.xml
+my-test/encodings.xml
 .idea/.gitignore
-.idea/misc.xml
-.idea/setting.xml
-.idea/vcs.xml
+my-test/misc.xml
+my-test/setting.xml
+my-test/vcs.xml
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
