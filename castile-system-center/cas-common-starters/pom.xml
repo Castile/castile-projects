@@ -3,26 +3,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.castile</groupId>
-        <artifactId>castile-projects</artifactId>
+        <artifactId>castile-system-center</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>castile-system-center</artifactId>
+    <artifactId>cas-common-starters</artifactId>
     <packaging>pom</packaging>
 
-    <modules>
-        <module>castile-bom</module>
-        <module>cas-commons</module>
-        <module>cas-common-starters</module>
-    </modules>
-
-    <name>castile-system-center</name>
+    <name>cas-common-starters</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <dependencyManagement>
-
-    </dependencyManagement>
 </project>

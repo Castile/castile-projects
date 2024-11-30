@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/castile-system-center/cas-commons/pom.xml" />
+        <option value="$PROJECT_DIR$/castile-system-center/cas-common-starters/cas-common-extension-starter/pom.xml" />
       </list>
     </option>
   </component>
