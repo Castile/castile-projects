@@ -14,6 +14,7 @@
         <module>castile-bom</module>
         <module>cas-commons</module>
         <module>cas-common-starters</module>
+        <module>cas-common-chain</module>
     </modules>
 
     <name>castile-system-center</name>
