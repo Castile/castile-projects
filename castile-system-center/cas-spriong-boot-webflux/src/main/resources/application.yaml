@@ -1,0 +1,19 @@
+# 端口号
+server:
+  port: 9100
+
+# actuator 应用监控
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    jmx:
+      exposure:
+        include: "*"
+spring:
+  webflux:
+    base-path: /fluxdemo
