@@ -34,21 +34,17 @@ public class ServiceSelectorExecutor extends AbstractServiceExecutor implements 
         return (S) extBeans.get(bizName);
     }
 
-//    @PostConstruct
-//    void init(){
-//        afterSingletonsInstantiated();
-//    }
     @Override
     public void afterSingletonsInstantiated() {
         // 在初始化后查询所有使用@Extension注解标注的服务bean
         Map<String, Object> beansWithAnnotation = this.applicationContext.getBeansWithAnnotation(Extension.class);
-        beansWithAnnotation.entrySet().forEach(entry -> {
-            Class<?> aClass = entry.getValue().getClass();
-            if (AopUtils.isAopProxy(entry.getValue())) {
+        beansWithAnnotation.forEach((key, value) -> {
+            Class<?> aClass = value.getClass();
+            if (AopUtils.isAopProxy(value)) {
                 aClass = ClassUtils.getUserClass(aClass);
             }
             Extension annotation = AnnotationUtils.findAnnotation(aClass, Extension.class);
-            Object object = extBeans.put(annotation.bizName(), entry.getValue());
+            Object object = extBeans.put(annotation.bizName(), value);
 
             if (Objects.nonNull(object)) {
                 throw new IllegalStateException("Duplicate extension '" + annotation.bizName() + "' found");

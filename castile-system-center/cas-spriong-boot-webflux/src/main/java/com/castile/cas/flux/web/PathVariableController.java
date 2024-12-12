@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.castile.cas.demos.web;
+package com.castile.cas.flux.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 
-package com.castile.cas.demos.web;
+package com.castile.cas.flux.web;
 
+import com.castile.cas.flux.serevice.ExporterService;
+import com.castile.common.extension.ServiceExecutor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -26,10 +29,20 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/basic")
 public class BasicController {
 
+    @Autowired
+    private ServiceExecutor serviceExecutor;
+
+    @GetMapping("/export")
+    public Mono<String> export(@RequestParam("way") String way, @RequestParam("fileName") String fileName){
+        String result = serviceExecutor.execute(ExporterService.class, way, service -> service.export(fileName));
+        return Mono.just(result);
+    }
+
     // http://127.0.0.1:8080/hello?name=lisi
     @RequestMapping("/hello")
     @ResponseBody
     public Mono<String> hello(@RequestParam(name = "name", defaultValue = "unknown user") String name) {
+
         return Mono.justOrEmpty("Hello " + name);
     }
 
