@@ -1,0 +1,25 @@
+# 端口号
+server:
+  port: 9101
+  servlet:
+    context-path: /webdemo
+
+# actuator 应用监控
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    jmx:
+      exposure:
+        include: "*"
+com:
+  castile:
+    oss:
+      enabled: true
+      access-key: 5pBxT3GHOvzG3J5oaBvB
+      endpoint: http://localhost:9010
+      secret-key: xghdsdd8f8YcZuVTialXG6e0w7QeAV2ErNEut4tU

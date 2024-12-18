@@ -17,6 +17,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <servicecomb.version>2.8.3</servicecomb.version>
+        <nifi.version>1.26.0</nifi.version>
     </properties>
 
     <dependencyManagement>
@@ -27,6 +28,11 @@
                 <version>${servicecomb.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.nifi</groupId>
+                <artifactId>nifi-api</artifactId>
+                <version>${nifi.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
