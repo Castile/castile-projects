@@ -28,6 +28,7 @@ public class OssAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean(S3OssClient.class)
     public OssClient ossClient(AmazonS3 amazonS3){
+
         return new S3OssClient(amazonS3);
     }
 
@@ -35,6 +36,7 @@ public class OssAutoConfiguration {
     @ConditionalOnMissingBean(AmazonS3.class)
     @ConditionalOnProperty(prefix = "com.castile.oss", name = "enabled", havingValue = "true")
     public AmazonS3 amazonS3(S3Properties s3Properties){
+        System.setProperty("aws.java.v1.disableDeprecationAnnouncement", "true");
         long nullSize = Stream.<String>builder()
                 .add(s3Properties.getEndpoint())
                 .add(s3Properties.getSecretKey())
