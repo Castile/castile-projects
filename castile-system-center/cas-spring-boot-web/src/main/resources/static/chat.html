@@ -112,6 +112,7 @@
                         var blinkTimeout = null;
                         eventSource.addEventListener("answer", function(evt){
                             var data = evt.data;
+                            // console.log(data)
                             var json = JSON.parse(data);
                             var content = json.content ? json.content : '';
                             content = content.replaceAll('\n','<br/>');
