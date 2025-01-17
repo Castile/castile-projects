@@ -42,8 +42,8 @@ public class SseService {
                 SSEClient.getSseInputStream(CM_URL, params, SSEClient.DEFAULT_TIMEOUT);
         try {
             StringBuilder answer = new StringBuilder();
-            SseManager.sendEvent(messageKey, "messageKey");
-            SseManager.sendMsg(messageKey, messageKey);
+//            SseManager.sendEvent(messageKey, "messageKey");
+//            SseManager.sendMsg(messageKey, messageKey);
             SseManager.sendEvent(messageKey, "answer");
             AtomicReference<Boolean> sdkError = new AtomicReference<>(false);
             SSEClient.readStream(sseInputStream, line -> {
@@ -67,16 +67,19 @@ public class SseService {
                 }
                 if (StringUtils.isNotBlank(message)) {
                     answer.append(message.replaceAll("\"", ""));
+//                    log.info("messageKey:{}, message is :{}", emitter.getMessageKey(), message);
                     SseManager.sendMsg(messageKey, message);
                 }
             });
-            emitter.setAiAnswer(answer.toString());
+//            emitter.setAiAnswer(answer.toString());
+//
+//            System.out.println("回答是： " + emitter.getAiAnswer());
 
             // 保存当前问答消息，自行实现
             ChatHistoryEntity message = chatHistoryService.saveHistory(messageKey);
-            SseManager.sendEvent(messageKey, "endTime");
+//            SseManager.sendEvent(messageKey, "endTime");
 //            SseManager.sendMsg(messageKey, DateUtil.formatDateTime(message.getEndTime()));
-            SseManager.sendEvent(messageKey, "expand");
+//            SseManager.sendEvent(messageKey, "expand");
             chatHistoryService.pushExpand(messageKey);
         } catch (IllegalStateException | IOException e) {
             log.error("push msg error", e);
@@ -91,6 +94,7 @@ public class SseService {
                 e.printStackTrace();
             } finally {
                 SseManager.closeEmitter(messageKey);
+                log.info("closing emitter: {}", messageKey);
             }
         }
 

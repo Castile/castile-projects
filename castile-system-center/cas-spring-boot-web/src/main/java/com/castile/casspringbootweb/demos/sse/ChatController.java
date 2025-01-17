@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -75,13 +76,20 @@ public class ChatController {
 
     @GetMapping(value = "/chatQuery/{msgId}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Object chatQuery(@PathVariable("msgId") String msgId){
+
         CasEmitter emitter = SseManager.getEmitter(msgId);
         // 组装消息/请求，发送给算法服务或者大模型
         String message = msgMap.get(msgId);
         emitter.setMessageKey(msgId);
         ChatMessage chatMessage = new ChatMessage("admain", message);
         chatMessage.setId(msgId);
-        sseService.chatTransfer(chatMessage);
-        return emitter;
+        msgMap.remove(msgId);
+
+        // 此处需要异步执行， 不能阻塞下面的返回
+        CompletableFuture.runAsync(()->{
+            sseService.chatTransfer(chatMessage);
+        });
+        // 立即返回
+        return SseManager.getEmitter(msgId);
     }
 }

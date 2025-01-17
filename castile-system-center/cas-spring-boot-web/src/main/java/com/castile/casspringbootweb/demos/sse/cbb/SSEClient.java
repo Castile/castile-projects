@@ -13,7 +13,7 @@ import java.net.URL;
  * @date 2025-01-17 21:23
  */
 public class SSEClient {
-    public static final int DEFAULT_TIMEOUT = 10000;
+    public static final int DEFAULT_TIMEOUT = 100000;
 
     /**
      * 获取sse输入流
@@ -69,9 +69,9 @@ public class SSEClient {
         try {
             String line = "";
             while ((line = reader.readLine()) != null) {
-//                if ("".equals(line)) {
-//                    continue;
-//                }
+                if ("".equals(line)) {
+                    continue;
+                }
                 msgHandler.handle(line);
             }
         } catch (Exception e) {

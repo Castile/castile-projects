@@ -1,5 +1,8 @@
 package com.castile.casspringbootweb.demos.sse.cbb;
 
+import com.castile.casspringbootweb.demos.sse.ChatMessage;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -54,7 +57,9 @@ public class SseManager {
     public static void sendMsg(String messageKey, String msg) throws IOException {
         CasEmitter emitter = EMITTER_MAP.get(messageKey);
         if (null != emitter) {
-            emitter.send(CasEmitter.event().data(msg));
+            emitter.send(CasEmitter.event().name("answer").data(new ChatMessage("test", msg)));
+
+//            emitter.send(new ChatMessage("test", msg));
         }
     }
 
@@ -80,6 +85,7 @@ public class SseManager {
         CasEmitter emitter = EMITTER_MAP.get(messageKey);
         if (null != emitter) {
             try{
+                emitter.send(SseEmitter.event().name("stop").data(""));
                 emitter.complete();
                 EMITTER_MAP.remove(messageKey);
             }catch (Exception e){
