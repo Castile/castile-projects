@@ -8,6 +8,7 @@ import org.apache.curator.framework.recipes.cache.TreeCacheEvent;
 import org.apache.curator.framework.recipes.cache.TreeCacheListener;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
  * @date 2024-12-24 00:05
  */
 @Component
+@ConditionalOnBean(CuratorZkClient.class)
 public class ZkConfigCacheListener implements InitializingBean {
     @Autowired
     private CuratorZkClient curatorZkClient;
