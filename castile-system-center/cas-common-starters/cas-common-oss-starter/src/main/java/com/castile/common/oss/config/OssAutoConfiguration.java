@@ -8,6 +8,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.castile.common.oss.client.OssClient;
 import com.castile.common.oss.client.S3OssClient;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -26,7 +27,7 @@ import java.util.stream.Stream;
 public class OssAutoConfiguration {
 
     @Bean
-    @ConditionalOnMissingBean(S3OssClient.class)
+    @ConditionalOnBean(AmazonS3.class)
     public OssClient ossClient(AmazonS3 amazonS3){
 
         return new S3OssClient(amazonS3);

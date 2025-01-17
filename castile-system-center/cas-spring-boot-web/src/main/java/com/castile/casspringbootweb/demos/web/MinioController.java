@@ -1,9 +1,11 @@
 package com.castile.casspringbootweb.demos.web;
 
+import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.ListBucketsRequest;
 import com.castile.common.oss.client.OssClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/minio")
+@ConditionalOnBean(AmazonS3.class)
 public class MinioController {
 
     @Autowired

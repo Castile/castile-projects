@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.data.Stat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/zk")
 @Slf4j
+@ConditionalOnBean(CuratorZkClient.class)
 public class ZkController {
     @Autowired
     private CuratorZkClient zkClient;

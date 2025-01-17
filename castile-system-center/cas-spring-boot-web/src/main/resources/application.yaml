@@ -19,7 +19,7 @@ management:
 com:
   castile:
     oss:
-      enabled: true
+      enabled: false
       access-key: 5pBxT3GHOvzG3J5oaBvB
       endpoint: http://localhost:9010
       secret-key: xghdsdd8f8YcZuVTialXG6e0w7QeAV2ErNEut4tU
