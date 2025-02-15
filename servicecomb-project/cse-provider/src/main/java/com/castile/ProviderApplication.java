@@ -15,14 +15,11 @@
  * limitations under the License.
  */
 
-package com.castile.samples;
-
-import org.apache.servicecomb.springboot2.starter.EnableServiceComb;
+package com.castile;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@EnableServiceComb
 public class ProviderApplication {
   public static void main(String[] args) throws Exception {
     try {

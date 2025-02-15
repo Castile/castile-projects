@@ -26,6 +26,12 @@
             <groupId>com.castile</groupId>
             <artifactId>cas-common-oss-starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.castile</groupId>

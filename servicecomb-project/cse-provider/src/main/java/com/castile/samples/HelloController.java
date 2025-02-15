@@ -14,7 +14,8 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello(){
-        RestTemplate restTemplate = RestTemplateBuilder.create();
-        return  restTemplate.getForObject("cse://provider/test/health", String.class);
+//        RestTemplate restTemplate = RestTemplateBuilder.create();
+//        return  restTemplate.getForObject("cse://provider/test/health", String.class);
+        return "hello";
     }
 }

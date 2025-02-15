@@ -1,4 +1,0 @@
-<config>
-    <handler id="context"
-             class="com.castile.samples.handler.ContextHandler" />
-</config>

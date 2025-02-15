@@ -1,11 +1,13 @@
 package com.castile.autoconfig;
 
 import com.castile.samples.filter.ContextFilter;
+import jakarta.servlet.http.HttpFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.servlet.http.HttpFilter;
+
+
 
 /**
  * @author castile
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpFilter;
 public class ServiceCombAutoConfiguration {
 
     @Bean
-    public FilterRegistrationBean<HttpFilter> contextFilterBean( ContextFilter contextFilter){
+    public FilterRegistrationBean<HttpFilter> contextFilterBean(ContextFilter contextFilter){
         FilterRegistrationBean<HttpFilter> registrationBean = new FilterRegistrationBean<>();
 //        registrationBean.setFilter(new ContextFilter());
         registrationBean.setFilter(contextFilter);

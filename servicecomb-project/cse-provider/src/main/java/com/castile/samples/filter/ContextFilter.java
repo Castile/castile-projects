@@ -2,20 +2,23 @@ package com.castile.samples.filter;
 
 import com.castile.Constants;
 import com.castile.context.ContextManager;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpFilter;
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.servicecomb.core.Const;
 import org.apache.servicecomb.foundation.common.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Value;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpFilter;
-import javax.servlet.http.HttpServletRequest;
+
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+
+import static org.apache.servicecomb.core.CoreConst.CSE_CONTEXT;
 
 /**
  * @author castile
@@ -29,7 +32,7 @@ public class ContextFilter extends HttpFilter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 //        httpServletRequest.setAttribute("x-biz-tenantId", "9000");
-        String strCseContext = httpServletRequest.getHeader(Const.CSE_CONTEXT);
+        String strCseContext = httpServletRequest.getHeader(CSE_CONTEXT);
         System.out.println(strCseContext);
         if (StringUtils.isNotEmpty(strCseContext)) {
             Map<String, String> cseContext =
