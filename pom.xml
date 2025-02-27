@@ -12,12 +12,14 @@
         <module>my-test</module>
         <module>castile-system-center</module>
         <module>servicecomb-project</module>
+        <module>nifi</module>
+        <module>maven-plugin-projects</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <servicecomb.version>3.2.3</servicecomb.version>
-        <nifi.version>1.26.0</nifi.version>
+        <nifi.version>2.2.0</nifi.version>
     </properties>
 
     <dependencyManagement>
@@ -32,6 +34,16 @@
             <dependency>
                 <groupId>org.apache.nifi</groupId>
                 <artifactId>nifi-api</artifactId>
+                <version>${nifi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.nifi</groupId>
+                <artifactId>nifi-toolkit-api</artifactId>
+                <version>${nifi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.nifi</groupId>
+                <artifactId>nifi-api-toolkit</artifactId>
                 <version>${nifi.version}</version>
             </dependency>
         </dependencies>
