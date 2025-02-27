@@ -24,4 +24,23 @@ public class CompletableFutureDemo {
         stringCompletableFuture.thenAccept(System.out::println);
     }
 
+    @Test
+    void testYield(){
+        int day = 6;
+        String dayType = switch (day) {
+            case 1, 2, 3, 4, 5 -> {
+                System.out.println("Weekday");
+                yield "Weekday"; // 使用 yield 返回值
+            }
+            case 6, 7 -> {
+                System.out.println("Weekend");
+                yield "Weekend";
+            }
+            default -> {
+                System.out.println("Invalid day");
+                yield "Unknown";
+            }
+        };
+        System.out.println("Day type: " + dayType);
+    }
 }
