@@ -1,5 +1,5 @@
 server:
-  port: 9093  # should be same with servicecomb.rest.address to use web container
+  port: 9095  # should be same with servicecomb.rest.address to use web container
   servlet:
     context-path: /provider
   tomcat:
@@ -9,10 +9,13 @@ server:
       pattern: '"[%{x-biz-tenantId}r]" %h %l %u %t "%r" %s %b %Dms "%{Referer}i" "%{User-Agent}i" "%{X-Request-ID}i" "%{X-Forwarded-For}i"'
 
 servicecomb:
+#  uploads:
+#    directory: /Users/castile/Documents/Code/castile-projects/servicecomb-project/cse-provider/src/main/resources/upload/
+#    maxsize: 65535
   server:
     context:
       ## 开启支持在将上下文传递到cse请求中
-      pass: true
+      pass: false
   accesslog:
     ## server 端 启用access log
     enabled: true
@@ -26,7 +29,7 @@ servicecomb:
   service:
     application: basic-application
     name: provider
-    version: 0.0.1
+    version: 0.0.2
   registry:
     sc:
       # Default using local service center
@@ -38,7 +41,7 @@ servicecomb:
     serverUri: http://localhost:30110
 
   rest:
-    address: 0.0.0.0:9093 # should be same with server.port to use web container
+    address: 0.0.0.0:9095 # should be same with server.port to use web container
     servlet:
       # https://servicecomb.apache.org/references/java-chassis/2.x/zh_CN/featured-topics/application-porter/porter-website.html#tomcatspring-bootweb
       urlPattern: /cse/*
