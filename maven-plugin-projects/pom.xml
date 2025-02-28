@@ -11,6 +11,9 @@
     <packaging>pom</packaging>
 
     <name>maven-plugin-projects</name>
+    <modules>
+        <module>api-change-plugin</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
