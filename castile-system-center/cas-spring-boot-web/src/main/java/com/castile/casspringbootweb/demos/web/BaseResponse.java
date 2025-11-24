@@ -13,5 +13,4 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BaseResponse<T> {
     private T result;
-
 }
