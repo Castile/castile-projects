@@ -89,6 +89,7 @@ public class ChatController {
         CompletableFuture.runAsync(()->{
             sseService.chatTransfer(chatMessage);
         });
+        chatHistoryService.saveHistory(msgId);
         // 立即返回
         return SseManager.getEmitter(msgId);
     }
