@@ -17,6 +17,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <java.version>21</java.version>
         <java-chassis-dependencies.version>3.2.3</java-chassis-dependencies.version>
         <slf4j.version>1.7.30</slf4j.version>
         <log4j.version>2.13.3</log4j.version>
@@ -55,7 +58,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.11.0</version>
                 <configuration>
                     <compilerArgument>-parameters</compilerArgument>
                     <source>21</source>

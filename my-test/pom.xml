@@ -13,6 +13,9 @@
     <name>my-test</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <java.version>21</java.version>
         <jackson-core.version>2.17.0</jackson-core.version>
 <!--        <nifi-version>1.18.0</nifi-version>-->
 <!--        <nifi-version>1.26.0</nifi-version>-->
